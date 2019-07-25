@@ -1,8 +1,6 @@
-\documentclass[a5paper]{article}
-\usepackage[left=10mm, right=10mm, top=10mm, bottom=15mm]{geometry}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\documentclass[a4paper]{article}
+\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
+\usepackage{amsthm, amsmath, amssymb}
 \usepackage[framemethod=TikZ]{mdframed}
 
 \newenvironment{exercise}[1][]{%
@@ -21,7 +19,7 @@
   \mdfsetup{frametitle={%
     \tikz[baseline=(current bounding box.east),outer sep=0pt]
     \node[anchor=east,rectangle,fill=red!40]
-    {\strut Note~(page~#1)};}}
+    {\strut Note~(#1)};}}
   \mdfsetup{
     innertopmargin=5pt,linecolor=red!40,%
     linewidth=2pt,topline=true,%
@@ -30,10 +28,52 @@
   {\end{mdframed}}
 
 \title{Notes on Chapter 2}
+\author{Chan Kha Vu}
 \date{}
 
 \begin{document}
 \maketitle
+
+\begin{note}[page 30]
+  \noindent
+
+  The claim that \(\sum_a \frac{\partial \pi(a)}{\partial H_t(b)} = 0\), where $\pi_t(a)$ is softmax function over arguments $H_t(b)$, is not obvious at all.
+  So, let's prove it.
+
+\begin{align*}
+  \frac{\partial \pi_t(a)}{\partial H_t(b)}
+  &\doteq \frac{\partial }{\partial H_t(b)} \frac{e^{H_t(a)}}{\sum_i e^{H_t(i)}}
+  \tag{$\frac{\partial fg}{\partial x} = \frac{\partial f}{\partial x} g + \frac{\partial g}{\partial x} f$}
+  \\ &=
+  \left( \frac{\partial}{\partial H_t(b)} e^{H_t(a)} \right) \cdot
+  \left( \frac{1}{\sum_i e^{H_t(i)}} \right)
+  +
+  \left( \frac{\partial}{\partial H_t(b)} \frac{1}{\sum_i e^{H_t(i)}} \right) \cdot
+  e^{H_t(a)}
+  \tag{$\frac{\partial }{\partial x} \frac{1}{f} = -\frac{1}{f^2} \frac{\partial f}{\partial x} $}
+  \\ &=
+  \frac{\boldsymbol{1}_{a=b} \cdot e^{H_t(a)}}{\sum_i e^{H_t(i)}}
+  -
+  \frac{e^{H_t(b)}}{\left(\sum_i e^{H_t(i)}\right)^2} \cdot
+  e^{H_t(a)}
+  \\ &=
+  \frac{\boldsymbol{1}_{a=b} \cdot \sum_i e^{H_t(i)} e^{H_t(a)} - e^{H_t(b)} e^{H_t(a)}}{\left(\sum_i e^{H_t(i)}\right)^2 }
+  \tag{$\sum_i e^{H_t(i)}$ is constant}
+\end{align*}
+
+Now, let's use the fact that $\pi_t(a)$ sums to one, because it is a softmax function. Now, the claim becomes pretty transparent:
+
+\begin{align*}
+  \sum_a \frac{\partial \pi_t(a)}{\partial H_t(b)}
+  &=
+  \sum_a \frac{\boldsymbol{1}_{a=b} \cdot \sum_i e^{H_t(i)} e^{H_t(a)} - e^{H_t(b)} e^{H_t(a)}}{\left(\sum_i e^{H_t(i)}\right)^2 }
+  \\ &=
+  \frac{\sum_i e^{H_t(i)} e^H_t(b)}{\left( \sum_i e^{H_t(i)} \right)^2} -
+  \frac{\sum_a e^{H_t(b)} e^{H_t(a)}}{\left( \sum_i e^{H_t(i)} \right)^2}
+  = 0
+  \tag{Q.E.D.}
+\end{align*}
+\end{note}
 
 
 \end{document}
