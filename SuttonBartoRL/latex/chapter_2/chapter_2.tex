@@ -9,7 +9,7 @@
     \node[anchor=east,rectangle,fill=blue!20]
     {\strut Exercise~#1};}}%
   \mdfsetup{
-    innertopmargin=5pt,linecolor=blue!20,%
+    innertopmargin=3pt,linecolor=blue!20,%
     linewidth=2pt,topline=true,%
     frametitleaboveskip=\dimexpr-\ht\strutbox\relax}
   \begin{mdframed}[]\relax}
@@ -19,9 +19,9 @@
   \mdfsetup{frametitle={%
     \tikz[baseline=(current bounding box.east),outer sep=0pt]
     \node[anchor=east,rectangle,fill=red!40]
-    {\strut Note~(#1)};}}
+    {\strut Remarks~(#1)};}}
   \mdfsetup{
-    innertopmargin=5pt,linecolor=red!40,%
+    innertopmargin=3pt,linecolor=red!40,%
     linewidth=2pt,topline=true,%
     frametitleaboveskip=\dimexpr-\ht\strutbox\relax}
   \begin{mdframed}[]\relax}
@@ -33,6 +33,30 @@
 
 \begin{document}
 \maketitle
+
+\begin{exercise}[2.4]
+  The estimated rewards are defined as $Q_t(a) \doteq c_n R_1 + c_{n-1} R_2 + \ldots + c_1 R_n$,
+  where in this case $c_i = \Pi_{j=1}^i \alpha_j\,.$
+\end{exercise}
+
+\begin{exercise}[2.6]
+  \noindent
+
+  Let's break it down to several intuitive stages of the learning process.
+  First, all estimations $Q_0(a)$ are larger than their true value $q^*(a)$,
+  so the agent will go through every of the bandits, till the $k$-th step.
+  After that, the value estimated at $\arg\max q(a)$ is likely to be the
+  largest, that explains why we have a huge spike.
+
+  Now we need to explain the drop after the spike. Remember that the estimations
+  $Q_t(a)$ are calculated as the mean over time $t$. Because $Q_0(a^*)$ was very
+  large, the estimations over time gets closer to its real value, whilst the
+  estimations on other bandits are larger (since they were only estimated once).
+
+  So, our agent comes back to try out the other values of $a$, only to find that
+  they are less than the optimal bandit $a^*$. As we can see from the graph, it
+  gradually returns to the optimal one.
+\end{exercise}
 
 \begin{note}[page 30]
   \noindent
@@ -46,13 +70,13 @@
   \tag{$\frac{\partial fg}{\partial x} = \frac{\partial f}{\partial x} g + \frac{\partial g}{\partial x} f$}
   \\ &=
   \left( \frac{\partial}{\partial H_t(b)} e^{H_t(a)} \right) \cdot
-  \left( \frac{1}{\sum_i e^{H_t(i)}} \right)
+  \frac{1}{\sum_i e^{H_t(i)}}
   +
   \left( \frac{\partial}{\partial H_t(b)} \frac{1}{\sum_i e^{H_t(i)}} \right) \cdot
   e^{H_t(a)}
   \tag{$\frac{\partial }{\partial x} \frac{1}{f} = -\frac{1}{f^2} \frac{\partial f}{\partial x} $}
   \\ &=
-  \frac{\boldsymbol{1}_{a=b} \cdot e^{H_t(a)}}{\sum_i e^{H_t(i)}}
+  \left( \boldsymbol{1}_{a=b} \cdot e^{H_t(a)} \right) \cdot \frac{1}{\sum_i e^{H_t(i)}}
   -
   \frac{e^{H_t(b)}}{\left(\sum_i e^{H_t(i)}\right)^2} \cdot
   e^{H_t(a)}
