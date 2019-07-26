@@ -18,11 +18,11 @@ def build(root_dir, file_name, prog):
         return
     try:
         print(subprocess.check_output(
-            ["texliveonfly", file_path], cwd=root_dir))
+            ["texliveonfly", file_name], cwd=root_dir))
         print(subprocess.check_output(
-            ["pdflatex", file_path], cwd=root_dir))
+            ["pdflatex", file_name], cwd=root_dir))
         print(subprocess.check_output(
-            ["pdflatex", file_path], cwd=root_dir))
+            ["pdflatex", file_name], cwd=root_dir))
     except subprocess.CalledProcessError:
         print("Failed to build %s." % (file_path,))
 
