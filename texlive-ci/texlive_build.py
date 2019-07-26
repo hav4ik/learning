@@ -13,18 +13,15 @@ def main():
 
 
 def build(file_path):
-    print file_path
-    return
     try:
-        subprocess.check_call(["texliveonfly", file_path])
-        subprocess.check_call(["pdflatex", file_path])
-        subprocess.check_call(["pdflatex", file_path])
+        print(subprocess.check_output(["texliveonfly", file_path]))
+        print(subprocess.check_output(["pdflatex", file_path]))
+        print(subprocess.check_output(["pdflatex", file_path]))
     except subprocess.CalledProcessError:
         print("Failed to build %s." % (file_path,))
 
 
 def walk(pattern):
-    print pattern
     prog = re.compile(pattern)
     for root, dirs, files in os.walk("."):
         for file_name in files:
