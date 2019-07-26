@@ -8,10 +8,5 @@ cache:
 before_script: cd $TRAVIS_BUILD_DIR
 script:
 - python texlive-ci/texlive_build.py ".*/latex/.*\.tex"
-deploy:
-  provider: releases
-  api_key:
-    secure: W4sirZEjQgp21io/PvAf9q/Iij5mlH+0R0KNtNzAp/hGpgdXoLRuoipd9T8DJZTIKCG1TKQM85kqtJbUTXm+5TUj78rxJTRQuL30/+itkh2vrsx26+WoTOmzuXwOHYjM6kbdoSI8gByznZUJGaxmBoi1EzDUmyI02DVoVooqmxAxCFmcPn0D3eWpibXiK48d24mT2Qo9xUCiPYCYXgGG8x3CgVe7nR07+ffd0CdfOsMUqsswh7/zdqUQdt7oCCzmKl94PmWuTmquO4YRceV5VB3o7EeRB8i4U0Hlp8JpcbK4pLdOFPiRX8TTfCVHdR9f0WYwrXD1bHXNwfC0EUhEJW5DchZEhmjLiviwhLz5t/oVCMqaYS7KqWrwiqIpCFv1BU1/+3sPXbvSUEMg3afoCUChqGln1yxNa0avAaX8WyVzaIM2IDUkeInEGMiZF0zxqLeQaSdd7ITcszebgvRYmO+F0LMUjojNoT6b13v7pSFtfWDsJ8KtxsxwpTse8bF6GaytpSBEbIVbQehqt1mTCGYiHFGhXHbmVO0bqbgWtvtxf/8KjXVlxLse3AcSUFnH4napEGKi7IO1y+sOD5LXpvKdCu2izPRsgX3VqogxIqyCfTZO1+fnrauXwB18OVZk9eElS3fno9P3B/GZXns7lcjk8n96F5TvVnlNexx75gc=
-  file: core/main.pdf
-  on:
-    repo: opencyb/TempStarter
+- find | sed 's|[^/]*/|- |g'
+
