@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 # Originally from https://github.com/latex3/latex3
+ORIG_DIR=$(pwd)
 
 # This script is used for building LaTeX files using Travis
 # A minimal current TL is installed adding only the packages that are
@@ -37,3 +38,5 @@ tlmgr option -- autobackup 0
 
 # Update the TL install but add nothing new
 tlmgr update --self --all --no-auto-install
+
+cd $ORIG_DIR

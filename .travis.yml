@@ -1,18 +1,12 @@
 language: generic
 install:
-- source ./texlive-ci/texlive_install.sh
+- source ./.texlive-ci/texlive_install.sh
+- sudo ./.texlive-ci/pdf2htmlex_install.sh
 cache:
   directories:
   - "/tmp/texlive"
   - "$HOME/.texlive"
+  - "/tmp/dependency_builds"
 before_script: cd $TRAVIS_BUILD_DIR
 script:
-- python texlive-ci/texlive_build.py ".*/latex/.*\.tex" --deploy out/
-- find | sed 's|[^/]*/|- |g'
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: out/
-  on:
-    branch: master
+- python .texlive-ci/texlive_build.py ".*/latex/.*\.tex" --deploy out/
