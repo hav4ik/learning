@@ -16,13 +16,17 @@ if ! command -v texlua > /dev/null; then
   cd install-tl-20*
 
   # Install a minimal system
-  ./install-tl --profile=../texlive-ci/texlive.profile
+  echo "BEFORE INSTALLING"
+  ./install-tl --profile=../.texlive-ci/texlive.profile
+  echo "AFTER INSTALLING"
 
   cd ..
 fi
 
 # Just including texlua so the cache check above works
+echo "LUA TEX?"
 tlmgr install luatex
+echo "LUA TEX YES!"
 
 # In the case you have to install packages manually, you can use an index of packages like
 # http://ctan.mirrors.hoobly.com/systems/texlive/tlnet/archive/

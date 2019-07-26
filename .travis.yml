@@ -1,12 +1,15 @@
 language: generic
+dist: xenial
 install:
+- sudo sudo add-apt-repository ppa:coolwanglu/pdf2htmlex --yes
+- sudo apt-get install -qq -y pdf2htmlex
 - source ./.texlive-ci/texlive_install.sh
-- sudo ./.texlive-ci/pdf2htmlex_install.sh
 cache:
   directories:
   - "/tmp/texlive"
   - "$HOME/.texlive"
-  - "/tmp/dependency_builds"
 before_script: cd $TRAVIS_BUILD_DIR
 script:
 - python .texlive-ci/texlive_build.py ".*/latex/.*\.tex" --deploy out/
+- ls SuttonBartoRL/latex/chapter_2/
+- pdf2htmlEX SuttonBartoRL/latex/chapter_2/chapter_2.pdf
