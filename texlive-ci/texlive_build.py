@@ -12,11 +12,17 @@ def main():
     walk(args.files)
 
 
-def build(file_path):
+def build(root_dir, file_name, prog):
+    file_path = os.path.join(root_dir, file_name)
+    if not prog.match(file_path):
+        return
     try:
-        print(subprocess.check_output(["texliveonfly", file_path]))
-        print(subprocess.check_output(["pdflatex", file_path]))
-        print(subprocess.check_output(["pdflatex", file_path]))
+        print(subprocess.check_output(
+            ["texliveonfly", file_path], cwd=root_dir))
+        print(subprocess.check_output(
+            ["pdflatex", file_path], cwd=root_dir))
+        print(subprocess.check_output(
+            ["pdflatex", file_path], cwd=root_dir))
     except subprocess.CalledProcessError:
         print("Failed to build %s." % (file_path,))
 
@@ -25,10 +31,7 @@ def walk(pattern):
     prog = re.compile(pattern)
     for root, dirs, files in os.walk("."):
         for file_name in files:
-            file_path = os.path.join(root, file_name)
-            if not prog.match(file_path):
-                continue
-            build(file_path)
+            build(root, file_name, prog)
 
 
 if __name__ == '__main__':
