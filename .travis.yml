@@ -1,18 +1,18 @@
 language: generic
+dist: xenial
 install:
-- source ./texlive-ci/texlive_install.sh
+- sudo sudo add-apt-repository ppa:coolwanglu/pdf2htmlex --yes
+- sudo apt-get install -qq -y pdf2htmlex
+- source ./.texlive-ci/texlive_install.sh
 cache:
   directories:
   - "/tmp/texlive"
   - "$HOME/.texlive"
 before_script: cd $TRAVIS_BUILD_DIR
 script:
-- python texlive-ci/texlive_build.py ".*/latex/.*\.tex" --deploy out/
-- find | sed 's|[^/]*/|- |g'
+- python .texlive-ci/texlive_build.py ".*/latex/.*\.tex" --deploy out/
 deploy:
-  provider: pages
+  provider: surge
+  project: ./out/
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: out/
-  on:
-    branch: master
+  domain: hav4ik.surge.sh
