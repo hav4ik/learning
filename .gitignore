@@ -1,0 +1,15 @@
+# VIM stuffs
+*.sw[pon]
+
+# Jupyter stuffs
+__pycache__/
+
+# Latex build
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+
+# NO PDF IN GIT!
+*.pdf
