@@ -1,0 +1,78 @@
+\documentclass[a4paper]{article}
+\usepackage{../../remarks}
+
+\title{Excercises and Notes}
+\author{Chan Kha Vu}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Smooth Manifolds}
+\bigskip
+
+\begin{exercise}[1-1]
+    We denote the equiv. class of $(x, 1)$ and $(x, -1)$ for $x \ne 0$ as $[x]$.
+    Each point $x \in M$ has a n-hood $\{ [x+o] \}_{x-r}^{x+r}$ that is
+    obviously euclidean by $(x, y) \equiv x$. The second countability follows trivially.
+    It is not hausdorff because $0_a$ and $0_b$ cannot be separated by any
+    neighbourhoods.
+\end{exercise}
+
+\begin{exercise}[1-2]
+    Let $M = \bigcup_I M_{i\in I}$ where each $M_i$ is congruent to $\mathbb{R}$,
+    then for each $x \in M_i$, it is locally euclidean and, since all $M_i$
+    are disjoint, is also hausdorff. It is not second-countable as any base
+    would be uncountable.
+\end{exercise}
+
+\begin{exercise}[1-3]
+    $(\implies)$ By lemma 1.10, each manifold $M$ has a countable basis of precompact
+    coordinate balls, so it is a countable union of compact subspaces
+    ($\sigma$-compact).
+
+    $( \impliedby )$ It suffices to show $X$ the space is second countable.
+    Let $K_n$ be the covering of $X$ by compact sets, and assume they're
+    all nonempty. For each $x\in K_n$, there is an open neighborhood
+    $U_{x,n}$ which is homeomorphic to an open ball in $\mathbb{R}^m$.
+    Then we have $K_n\subset \bigcup_{x\in K_n} U_{x,n}$. By compactness,
+    there are finitely many $U_{x,n}$ which cover each $K_n$. By unioning these
+    all together for each $n$ gives us a countable covering for $X$ by open sets
+    which are homeomorphic to open balls in $\mathbb{R}^m$. Each of these sets
+    has a countable basis. The countable union of these sets is also a countable
+    set, so it remains to show that this set is a basis, which is easy.
+\end{exercise}
+
+\begin{exercise}[1-4]
+\begin{enumerate}[label=(\alph*)]
+    \item Since $\mathcal{U}$ is a cover of $M$, for each $x\in M$, there is an
+        open n-hood $U_x \in \mathcal{U}$ that contains $x$. Since it intersects
+        finitely many others, $\mathcal{U}$ is locally finite.
+    \item Let's cover $\mathbb{R}^2$ with open sets
+        $\left\{ V \right\} \cup \left\{ H_n \right\}_{n\in \mathbb{Z}}$, where
+        $H_n = \left\{ (x, y) \mid n - \epsilon < y < n + \epsilon \right\}$,
+        $\epsilon < \frac{1}{2}$, and
+        $V = \left\{ (x, y) \mid - \epsilon < x < + \epsilon \right\}$.
+        Such cover would be locally-finite, but $V$ actually intersects with
+        infinitely many other subsets from collection $\mathcal{U}$.
+    \item If each $U \in \mathcal{U}$ is precompact, then $\overline{U}$ is
+        compact in $M$. For each $x \in \overline{U}$, let $V_x$ be the open
+        n-hood of $x$ that intersects with finitely many elements from
+        $\mathcal{U}$ (local finity). Since $\overline{U}$ is compact, from the
+        cover $\left\{ V_x \right\}_{x \in \overline{U}}$ we can choose a finite
+        subcover $V_{x^*}$, each element of which intersects with finite number
+        of elements of $\mathcal{U}$. Then, since they all are finite cover of
+        $U$, the element $U$ itself intersects with finitely many others from
+        $\mathcal{U}$. Q.E.D.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[1-5]
+    $(\impliedby)$ By definition then, $M$ is a topological manifold, thus
+    by proposition 1.15 it is paracompact and by proposition 1.11 it has
+    countably many connected components.
+
+    $(\implies)$
+\end{exercise}
+
+\end{document}
