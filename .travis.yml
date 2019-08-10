@@ -10,7 +10,7 @@ cache:
   - "$HOME/.texlive"
 before_script: cd $TRAVIS_BUILD_DIR
 script:
-- python .texlive-ci/texlive_build.py ".*/latex/.*\.tex" --deploy out/
+- python .texlive-ci/texlive_build.py ".*\.tex$" --deploy out/
 deploy:
   provider: surge
   project: ./out/
