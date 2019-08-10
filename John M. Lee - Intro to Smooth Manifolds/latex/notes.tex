@@ -72,7 +72,127 @@
     by proposition 1.15 it is paracompact and by proposition 1.11 it has
     countably many connected components.
 
-    $(\implies)$
+    $(\implies)$ Let's examine a single connected component $M_0$ of $M$.
+    Let $\left\{ (U_x, \phi_x) \right\}$ be the open cover of $M_0$ by open nbrh
+    homeomorphic to $\mathbb{R}^n$. For each $U_x$, there is a countable
+    basis of precompact coordinate balls, let's call it $\mathcal{B}_{U_x}$. The
+    collection of such bases also forms a base $\mathcal{B}$ of topology of
+    $M_0$. By paracompactness of $M_0$, $\mathcal{B}$ admits a locally-finite
+    refinement, let's call it $\mathcal{B}'$, the elements of which are also
+    precompact and forms a new cover of $M_0$.
+
+    Since $M_0$ is locally-euclidean and connected, it is path-connected.
+    For arbitrary pair $x, y \in M_0$ let's consider a path
+    $\gamma \colon [0, 1] \to M_0$ where $\gamma(0) = x$ and $\gamma(1) = y$.
+    Since $[0,1]$ is compact, codomain of $\gamma$ is also compact. So it can be
+    covered with finite number of basis elements (precompact coord balls).
+    Let's say $\delta(x,y) \in \mathbb{N}$ is the smallest size of all such covers,
+    and $\delta(U, V) = \min_{x \in U, y \in V} \delta(x,y)$ for $U, V \in \mathcal{B}'$.
+    In other words, from each element of $M_0$, we can reach another elements
+    in a finite number of "hops".
+
+    Let's fix an element $V_0 \in \mathcal{B}'$ and denote $\mathbb{V}_n$ as set
+    of all $U \in \mathcal{B}' \colon \delta(U, V_0) = n$. It is easy to prove
+    that $\mathcal{V}_n$ is finite $\forall n \in \mathbb{N}$. Then the collection
+    $\mathcal{B}' = \left\{ \mathcal{V}_n \right\}_{n \in \mathbb{N}}$ is countable.
+    Now, since $\mathcal{B}'$ is a refinement of $\mathcal{B}$, $M_0$ is
+    second countable.
+
+    Now, as the number of connected components of $M$ is countable, and each
+    admits a countable base, the base of whole $M$ is also countable. (Q.E.D)
+\end{exercise}
+
+\begin{exercise}[1-6]
+    First, let's follow the problem's hint and prove that $F_s \colon \mathbb{R}^n \to \mathbb{R}^n$,
+    $F_s(x) = \left\| x \right\|^{s-1} x$ where $s>0$ is a homeomorphism but not a diffeomorphism
+    unless $s=1$. $F_s$ sends each vector $x \in \mathbb{R}^n$ to a $x'$ that has
+    the same direction as $x$ and $\left\| x' \right\| = \left\| x \right\|^s$, making
+    it a bijection and, since it is clearly continuous, it is a homeomorphism.
+    Either $F_s$ or the inverse $F_s^{-1} (x) = \left\| x \right\|^{\frac{1}{s} - 1} x$
+    are not smooth at $x=0$ when $s \ne 1$. So $F_s$ is not a diffeomorphism.
+    Moreover, $F_s \circ F_{s'}^{-1} = \left\| x \right\|^{\frac{s}{s'} - 1} x$ is not smooth, 
+    unless $s' = s$.
+
+    Let's get back to our problem. Let's assume $M$ has a smooth structure $\mathcal{A}_0$.
+    From $\mathcal{A}_0$, we extract a paracompact cover of coordinate balls from its base,
+    which forms a smooth atlas $\mathcal{A}'_0$. Let's consider all $(U, \varphi) \in \mathcal{A}'_0$
+    such that $\exists p \in U \colon \varphi(p) = 0$ and $\forall (U', \varphi') \colon U\cap U' = \varnothing$.
+    If there are none, we can manually construct one, as we will show later.
+    By replacing such charts with $(U, F_s \circ \varphi)$, together with all
+    other non-centered charts, we can form an smooth atlas $\mathcal{A}'_s$
+    (it is an atlas because $F_s$ is a diffeomorphism on $\mathbb{R}^n \setminus \{0\}$),
+    that is not smoothly compatible with $\mathcal{A}'_0$ because $F_s \circ \varphi \circ \psi^{-1} $ is not smooth, unless $s=1$.
+    By proposition 1.17, $\mathcal{A}'_0$ belongs to a different smooth structure,
+    let's call it $\mathcal{A}_s$. Similarly, we can prove that for any $s>0$ and $s'>0$
+    that are not equal to $1$, the transitions $F_s \circ \varphi \circ \varphi^{-1} \circ F_{s'}^{-1} = F_s \circ F_{s'}^{-1} $
+    is not smooth, so $\forall s,s'>0 \colon s \ne s'$, $\mathcal{A}_s$ and
+    $\mathcal{A}_{s'}$ are not smoothly compatible, thus belongs to different
+    smooth structures. Clearly, their number is uncountable.
+
+    Let's show that we can construct an atlas that contains charts centered at
+    zero and the center of such charts does not contain in any other charts.
+    Get an arbitrary $(U, \varphi)$,
+    get an paracompact element $V$ from the local basis such that $\overline{V} \subset U$.
+    Since it is closed, $M \setminus \overline{V}$ is open, so is its intersection
+    with all other basis elements. The induced topology on $M \setminus \overline{V}$,
+    together with the chosen $(U, \varphi)$, forms an atlas smoothly compatible
+    with $\mathcal{A}$, which we will also call $\mathcal{A}'_0$. (Q.E.D).
+\end{exercise}
+
+\begin{exercise}[1-7]
+(a) and (b) are trivial trigonometry, so I wouldn't prove them here.
+\begin{enumerate}[topsep=0pt]
+    \item[(c)] On charts $\mathbb{S}^n \setminus \{N\}$ and $\mathbb{S}^n \setminus \{S\}$,
+        the transition map $\widetilde{\sigma} \circ \sigma^{-1} = -\sigma \circ -\boldsymbol{1} \circ \sigma$
+        sends each point $(x_1, \ldots, x_n, x_{n+1})$ to $(x_1, \ldots, x_n, -x_{n+1})$ (mirror symmetry),
+        which is a diffeomorphism. It covers $\mathbb{S}^n$, so it is an atlas.
+        This atlas defines a unique smooth structure, according to proposition 1.17.
+    \item[(d)] It is sufficient to show that $(\mathbb{S}^n \setminus \{N\}, \sigma)$ and
+        the chart $\varphi_{i}(x) = (x_1, \dots, x_{i-1}, x_{i+1}, \dots, x_n)$
+        are smoothly compatible. In fact, $\sigma \circ \varphi_i^{-1} $ and
+        $\varphi_i \circ \sigma^{-1} $ are just reprojections, which are smooth.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[1-11]
+    $M = \overline{\mathbb{B}}^n = \mathbb{B}^n \cup \mathbb{S}^{n-1}$. Hausdorffness
+    and second countability follows naturally as $M \in \mathbb{R}^n$. Now every
+    point $x \in \mathbb{B}^n$ admits an open nbh $U_x = \mathcal{B}_{1-\|x\|}(x)$
+    --- a precompact n-ball that contained in $\mathbb{B}^n$. We pair each such
+    nbhs with a natural homeomorphism $\varphi_x \doteq \boldsymbol{1}$ (which
+    will be our inner chart).
+    For each $x \in \partial\overline{\mathbb{B}}^n = \mathbb{S}^{n-1}$, we construct a chart
+    $(U_x, \varphi_x)$ as following. $U_x = \mathcal{B}_{\epsilon}(x) \cap \overline{\mathbb{B}}^n$,
+    with $\epsilon$ chosen such that it is much smaller than the hemishpere (precompact coordinate ball in the basis of induced topology).
+    We then choose $\varphi_x = \pi_{\overline{\mathbb{HS}}^{n} \mid \mathbb{H}^n} \circ \pi_{\overline{\mathbb{B}}^n \mid \overline{\mathbb{HS}}^n}$.
+    Geometrically, $\pi_{\overline{\mathbb{B}}^n \mid \overline{\mathbb{HS}}^n}$ projects
+    our nbh $U_x \subseteq \overline{\mathbb{B}}^n$ to a closed unit hemisphere in higher dimension
+    (upwards vertically). Then, $\pi_{\overline{\mathbb{HS}}^{n} \mid \mathbb{H}^n}$
+    projects that surface horizontally back to $\mathbb{H}^n$. Proving that this
+    combination is a diffeomorphism $U_x \to \mathbb{H}^n$ is trivial. From this,
+    it follows that our chart is a boundary one. Transition maps between internal
+    charts is $\boldsymbol{1}$, which makes our interior atlas smoothly compatible
+    with standard structure. Transition map between boundary charts $V$ and $V'$
+    are just a combination of diffeomorphic projections, which itself is diffeomorphism.
+    Transition maps between interior chart and boundary are also identity maps
+    and diffeomorphic projections. So, Our smooth atlas is compatible with standard one.
+\end{exercise}
+
+\begin{exercise}[1-12]
+    By example 1.8, the product of manifolds is also a manifold of dimension
+    equal to the sum of dimensions of these manifolds. So, let $M = M_1 \times \dots \times M_k$
+    be a $n = \sum_{i=1}^k n_i$ dimensional manifold, where $n_i$ is the dimensionality
+    of $M_i$. Then, we can treat the problem as showing $M \times N$ is a manifold with
+    boundary. $M \times N = M\times \text{Int}N \cup M\times \partial N$. Now,
+    $M \times \text{Int}N$ is a $n\times m$ manifold ($m$ is the dimensionality of $N$).
+    The boundary $M \times \partial N$ is a manifold with boundary with dimension
+    $n \times (m-1)$.
+
+    Let's show that each point $x \in M\times \partial N$ is a boundary point.
+    Consider a chart $U_x = U^M_x \times U^N_x$. By definition, $U^N_x$ is a
+    boundary chart of N, so it is homeomorphic to $\mathbb{H}^m$. Then $U_x$ is
+    homeomorphic to $\mathbb{R}^n \times \mathbb{H}^m = \mathbb{H}^{n+m}$. Thus,
+    by proposition 1.37, $M \times \partial N$ is the boundary of $M \times N$. (Q.E.D)
 \end{exercise}
 
 \end{document}
