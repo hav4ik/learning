@@ -1,12 +1,24 @@
 \documentclass[a4paper]{article}
 \usepackage{../../remarks}
 
-\title{Excercises and Notes}
+\title{"Introduction to Smooth Manifolds": Excercises and Notes}
 \author{Chan Kha Vu}
 \date{}
 
 \begin{document}
+
 \maketitle
+\begin{abstract}
+\textit{
+    Hey, I'm Vu. This is just a place where I keep all of my notes while reading
+    the book \href{https://www.springer.com/gp/book/9780387217529}{"John M. Lee: Introduction to Smooth Manifolds"}.
+    I'm an old noob with very weak formal training in Mathematics, so lots of proofs here
+    might look messy, too obvious and can be ommited, or even unstrict. Would be very
+    grateful if you pointed them out to me tho.
+    By the way, you can find more about me on my blog \href{https://hav4ik.github.io}{hav4ik.github.io}.
+}
+\end{abstract}
+
 
 \section{Smooth Manifolds}
 \bigskip
@@ -194,5 +206,43 @@
     homeomorphic to $\mathbb{R}^n \times \mathbb{H}^m = \mathbb{H}^{n+m}$. Thus,
     by proposition 1.37, $M \times \partial N$ is the boundary of $M \times N$. (Q.E.D)
 \end{exercise}
+
+
+
+
+\section{Smooth Functions and Smooth Maps}
+
+\begin{note}[on ex. 2.1]
+    This one is obvious but I'm noob, so I'll state it clear. We need to prove that $C^\infty(M)$ forms a commutative ring, and is a commutative
+    and associative algebra over $\mathbb{R}$. The addition $f+g$ satisfies
+    axioms of abelian group (namely \textit{closure, associativity, commutativity,
+    additive identity}, and \textit{additive inverse}), and the pointwise multiplication
+    $f \cdot g$ satisfies monoidal axioms (namely \textit{associativity} and
+    \textit{multiplication identity}). The pointwise  \textit{left-} and
+    \textit{right-distributivity} of multiplication with respect to addition are also
+    satisfied. Thus, $C^\infty(M)$ is a commutative ring. The pointwise multiplication
+    is also \textit{bilinear}, together with other properties of the product
+    makes $C^\infty(M)$ a associative and commutative algebra.
+\end{note}
+
+\begin{note}[on ex. 2.7]
+    First, let's prove the proposition 2.5.
+    \begin{itemize}[topsep=0pt]
+        \item[(a)] $\implies$ By proposition 2.4, $F$ is continuous, so $F^{-1} (V)$ is open in $M$,
+            thus in $U \cap F^{-1} \left( V \right) $. The composite map is
+            smooth by definition.
+
+        $\impliedby$ $F\mid_{U \cap F^{-1} (V)} = \varphi \circ \left( \psi \circ F \circ \varphi^{-1} \right) \circ \psi^{-1}$
+            is smooth by definition. So, at least on a refinement of charts
+            $(U, \varphi)$ and $(V, \psi)$, which are also smooth charts, $F$ is smooth.
+
+        \item[(b)] $\implies$ Applying (a) to every points and every pair of charts
+            $U_\alpha$ and $V_\beta$ that nontrivially intersects the image $F(U_\alpha)$,
+            we get a formulation of (b). The other way ($\impliedby$) is obvious,
+            since it implies (a).
+    \end{itemize}
+    Proposition 2.6 is quite trivial, and can be implied just by definitions.
+\end{note}
+
 
 \end{document}

@@ -3,6 +3,14 @@
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{enumitem}
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
 \newenvironment{exercise}[1][]{%
   \mdfsetup{frametitle={%
     \tikz[baseline=(current bounding box.east),outer sep=0pt]

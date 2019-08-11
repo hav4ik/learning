@@ -10,6 +10,7 @@ __pycache__/
 *.fls
 *.log
 *.gz
+*.out
 
 # NO PDF IN GIT!
 *.pdf
