@@ -225,6 +225,16 @@
     makes $C^\infty(M)$ a associative and commutative algebra.
 \end{note}
 
+\begin{note}[on ex. 2.3]
+    By $f$ is smooth $\implies$ for every point $p$ there exists a chart $(U, \varphi)$,
+    such that $p \in U$ and $ f|_U \circ \varphi^{-1}$ is smooth. This would be
+    true for some cover $\mathcal{A}$ of $M$. Let's assume that $(V, \psi)$ does not belong to this cover.
+    Then, since we're talking about smooth manifolds, $(V, \psi)$ belongs to the
+    same smooth structure, so
+    $\forall (U, \varphi) \in \mathcal{A}, U \cap V \ne \varnothing \colon f|_{V\cap U} = f \circ \psi^{-1} = (f \circ \varphi^{-1}) \circ (\varphi \circ \psi^{-1})$.
+    Clearly, it is smooth.
+\end{note}
+
 \begin{note}[on ex. 2.7]
     First, let's prove the proposition 2.5.
     \begin{itemize}[topsep=0pt]
@@ -244,5 +254,55 @@
     Proposition 2.6 is quite trivial, and can be implied just by definitions.
 \end{note}
 
+\begin{note}[on ex. 2.16]
+\begin{enumerate}
+    \item[(a)] I suggest this one is actually about diffeomorphisms between manifolds
+        $M \xrightarrow[]{f} N \xrightarrow[]{g} K$. Using proposition 2.10 (d),
+        $g\circ f$ is smooth and, since their inverse are smooth,
+        $f^{-1}\circ g^{-1}$ is also smooth, hence their combination
+        is a diffeomorphism.
+    \item[(b)] This one is actually about set product, not pointwise product
+        (which makes no sense since points of manifold may not equipped with multiplication).
+        Having diffeomorphisms $f_1\colon M_1 \to N_1$ and $f_2\colon M_2 \to N_2$,
+        we need to show that $f_1 \times f_2$ is also a diffeomorphism.
+
+        Well, the problem is, I skipped lots of calculus class, so I don't know
+        of any theorems on products of smooth functions. Let's quickly
+        prove the lemma that for smooth $F_1\colon \mathbb{R}^{n_1} \to \mathbb{R}^{m_1}$ and
+        $F_2\colon \mathbb{R}^{n_2} \to \mathbb{R}^{m_2} $ their product is also
+        smooth. Let's look at the Jacobian of $F_1 \times F_2$:
+        $$
+        \begin{pmatrix}
+            \left[ \frac{\partial F_1^k}{\partial x_i} \right]_{i \le n_1}^{k \le m_1} & 0 \\
+            0 & \left[ \frac{\partial F_2^k}{\partial x_i} \right]_{i>m_1}^{k>m_1}  
+        \end{pmatrix} 
+        $$
+        Clearly, all elements of this matrix are continuous, so $F_1\times F_2 \in C^1 $.
+        Now, we need to show that its higher-order partial derivatives are also continuous.
+        Clearly:
+        $\frac{\partial }{\partial x_j} \left( \frac{\partial F_1^k}{\partial x_i} \right)  $
+        is $0$ if $j > n_1$, and continuous otherwise since $F_1$ is smooth. So the shape of higher-order
+        partial derivatives will be similar to the Jacobian (blocks of continuous
+        functions and zeros on parts that are not in the domain of either $F_1$ or $F_2$).
+        This roughly proves that the set product of smooth functions are smooth.
+
+        Now, back to the exercise. The map $f_1\times f_2$ are smooth since their coordinate
+        representation are smooth as product of smooth functions. Same for their inverse
+        $f_1^{-1} \times f_2^{-1}$.
+
+    \end{enumerate}
+    The rest is trivial. (c) follows by the fact that continuity of $f$
+    and $f^{-1}$ implies openess. (d) is a consequence of (c), and (e) follows
+    naturally from (a).
+\end{note}
+
+
+
+\section{Some endnote}
+
+Just found \href{https://wj32.org/wp/wp-content/uploads/2012/12/Introduction-to-Smooth-Manifolds.pdf}{this guy}
+that, surprisingly, also writes up the exercies in a nice document!
+I'm not the only crazy one :D His notes are not so messy and filled with re-proving
+obvious things as mine though.
 
 \end{document}
