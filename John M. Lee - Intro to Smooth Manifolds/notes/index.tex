@@ -115,15 +115,21 @@
 \end{exercise}
 
 \begin{exercise}[1-6]
-    First, let's follow the problem's hint and prove that $F_s \colon \mathbb{R}^n \to \mathbb{R}^n$,
-    $F_s(x) = \left\| x \right\|^{s-1} x$ where $s>0$ is a homeomorphism but not a diffeomorphism
-    unless $s=1$. $F_s$ sends each vector $x \in \mathbb{R}^n$ to a $x'$ that has
-    the same direction as $x$ and $\left\| x' \right\| = \left\| x \right\|^s$, making
-    it a bijection and, since it is clearly continuous, it is a homeomorphism.
-    Either $F_s$ or the inverse $F_s^{-1} (x) = \left\| x \right\|^{\frac{1}{s} - 1} x$
-    are not smooth at $x=0$ when $s \ne 1$. So $F_s$ is not a diffeomorphism.
-    Moreover, $F_s \circ F_{s'}^{-1} = \left\| x \right\|^{\frac{s}{s'} - 1} x$ is not smooth, 
-    unless $s' = s$.
+    First, let's follow the problem's hint and prove the following lemma:
+    \begin{lemma}
+        $F_s \colon \mathbb{R}^n \to \mathbb{R}^n$,
+        $F_s(x) = \left\| x \right\|^{s-1} x$ where $s>0$ is a homeomorphism but not a diffeomorphism
+        unless $s=1$.
+    \end{lemma}
+    \begin{prf}
+        $F_s$ sends each vector $x \in \mathbb{R}^n$ to a $x'$ that has
+        the same direction as $x$ and $\left\| x' \right\| = \left\| x \right\|^s$, making
+        it a bijection and, since it is clearly continuous, it is a homeomorphism.
+        Either $F_s$ or the inverse $F_s^{-1} (x) = \left\| x \right\|^{\frac{1}{s} - 1} x$
+        are not smooth at $x=0$ when $s \ne 1$. So $F_s$ is not a diffeomorphism.
+        Moreover, $F_s \circ F_{s'}^{-1} = \left\| x \right\|^{\frac{s}{s'} - 1} x$ is not smooth, 
+        unless $s' = s$.
+    \end{prf}
 
     Let's get back to our problem. Let's assume $M$ has a smooth structure $\mathcal{A}_0$.
     From $\mathcal{A}_0$, we extract a paracompact cover of coordinate balls from its base,
@@ -268,25 +274,31 @@
 
         Well, the problem is, I skipped lots of calculus class, so I don't know
         of any theorems on products of smooth functions. Let's quickly
-        prove the lemma that for smooth $F_1\colon \mathbb{R}^{n_1} \to \mathbb{R}^{m_1}$ and
-        $F_2\colon \mathbb{R}^{n_2} \to \mathbb{R}^{m_2} $ their product is also
-        smooth. Let's look at the Jacobian of $F_1 \times F_2$:
-        $$
-        \begin{pmatrix}
-            \left[ \frac{\partial F_1^k}{\partial x_i} \right]_{i \le n_1}^{k \le m_1} & 0 \\
-            0 & \left[ \frac{\partial F_2^k}{\partial x_i} \right]_{i>m_1}^{k>m_1}  
-        \end{pmatrix} 
-        $$
-        Clearly, all elements of this matrix are continuous, so $F_1\times F_2 \in C^1 $.
-        Now, we need to show that its higher-order partial derivatives are also continuous.
-        Clearly:
-        $\frac{\partial }{\partial x_j} \left( \frac{\partial F_1^k}{\partial x_i} \right)  $
-        is $0$ if $j > n_1$, and continuous otherwise since $F_1$ is smooth. So the shape of higher-order
-        partial derivatives will be similar to the Jacobian (blocks of continuous
-        functions and zeros on parts that are not in the domain of either $F_1$ or $F_2$).
-        This roughly proves that the set product of smooth functions are smooth.
+        prove the following:
 
-        Now, back to the exercise. The map $f_1\times f_2$ are smooth since their coordinate
+        \begin{lemma}
+            for smooth $F_1\colon \mathbb{R}^{n_1} \to \mathbb{R}^{m_1}$ and
+            $F_2\colon \mathbb{R}^{n_2} \to \mathbb{R}^{m_2} $ their product is also
+            smooth. 
+        \end{lemma}
+        \begin{prf}
+            Let's look at the Jacobian of $F_1 \times F_2$:
+            $$
+            \begin{pmatrix}
+                \left[ \frac{\partial F_1^k}{\partial x_i} \right]_{i \le n_1}^{k \le m_1} & 0 \\
+                0 & \left[ \frac{\partial F_2^k}{\partial x_i} \right]_{i>m_1}^{k>m_1}  
+            \end{pmatrix} 
+            $$
+            Clearly, all elements of this matrix are continuous, so $F_1\times F_2 \in C^1 $.
+            Now, we need to show that its higher-order partial derivatives are also continuous.
+            Clearly:
+            $\frac{\partial }{\partial x_j} \left( \frac{\partial F_1^k}{\partial x_i} \right)  $
+            is $0$ if $j > n_1$, and continuous otherwise since $F_1$ is smooth. So the shape of higher-order
+            partial derivatives will be similar to the Jacobian (blocks of continuous
+            functions and zeros on parts that are not in the domain of either $F_1$ or $F_2$).
+            This roughly proves that the set product of smooth functions are smooth.
+        \end{prf}
+            Now, back to the exercise. The map $f_1\times f_2$ are smooth since their coordinate
         representation are smooth as product of smooth functions. Same for their inverse
         $f_1^{-1} \times f_2^{-1}$.
 
@@ -295,6 +307,182 @@
     and $f^{-1}$ implies openess. (d) is a consequence of (c), and (e) follows
     naturally from (a).
 \end{note}
+
+\begin{note}[on ex. 2.24]
+    Instead of using proposition 1.15, we follow prop. 1.40 (c) to extract a finite
+    refinement. Instead of constructing a basis from only coordinate balls, we need
+    to include coordinate half-balls also. The bump function $f_i$ also needs to be
+    modified for the case of half-balls.
+\end{note}
+
+\begin{note}[on ex. 2.27]
+    When $M \equiv \mathbb{R}$, $\varphi \equiv \iota$ (inclusion map),
+    $f(x) = \frac{1}{x}$, and $A = (0, \infty)$ is an open set. Clearly, $f$ does
+    not have an extension but is smooth on $A$.
+\end{note}
+
+\begin{exercise}[2-1]
+    $f$ is smooth on $\mathbb{R} \setminus \{0\}$. Let's take $x=0$ and the chart
+    on $(U=(-1,1),\varphi=\iota)$ for the domain and $(V=(1-\epsilon, 1+\epsilon), \psi=\iota)$ for
+    the codomain, where $\iota$ is the inclusion map. Then, $f^{-1}(V) = [0, +\infty)$
+    and $U \cap f^{-1}(V) = [0, 1)$. $\varphi(U \cap f^{-1}(V)) = [0,1)$, so
+    clearly $\psi \circ f \circ \varphi^{-1}$ is smooth, but $f$ is not even
+    continuous.
+\end{exercise}
+
+\begin{exercise}[2-2]
+    I just realised that we don't have a lemma that ensures smoothness of projections.
+    So, let's just do that!
+
+    \begin{lemma}
+        If $M_1 \dots M_{k-1} $ are smooth manifolds without boundary, and $M_k$ is a
+        manifold with boundary, then the projection $\pi_i \colon M_1 \times M_2 \times \dots \times M_k \to M_i$
+        is smooth.
+    \end{lemma}
+    \begin{prf}
+        Here I need to point out that, by proposition 1.45, the product is a
+        manifold with boundary if there are at most one manifold with boundary.
+        Product of multiple manifolds with boundary is not a manifold with boundary
+        (see the notes on proposition 1.45).
+        Consider charts $(U, \varphi) = (U_1 \times \dots \times U_k, \varphi_1 \times \dots \times \varphi_k)$,
+        where $(U_i, \varphi_i)$ are smooth charts of $i$-th manifold.
+        Then, $\pi_i = \varphi_i \circ \pi_i \circ \varphi^{-1}$ is smooth, as a
+        mapping from $\mathbb{R}^{n_1} \times \dots \times \mathbb{R}^{n_k}$ to $\mathbb{R}^{n_i} $,
+        we have already proven before that it is smooth.
+    \end{prf}
+
+    Now, let's get back to the original problem. The $\implies $ case is obvious,
+    since by proposition 2.10 (d), composition of smooth $F$ and smooth $\pi_i$
+    is also a smooth map. Let's prove the $\impliedby$ case, i.e. if $F_i$ is 
+    smooth then $F$ is smooth.
+\end{exercise}
+
+\begin{exercise}[2-3]
+  \begin{enumerate}
+    \item[(a)]
+      For education purpose, let's choose the stereographic projection
+      $\sigma \colon \mathbb{S}^1 \setminus \{N\} \to \mathbb{R}^1$, the
+      properties of which has been discussed in exercise (1-7), defined in
+      complex coordinates as:
+      $$
+      \sigma(e^{i\theta} ) = \frac{\cos\theta}{1-\sin\theta }
+      \quad \text{and} \quad
+      \sigma^{-1}(u) = \frac{2u + i(u^2-1)}{u^2+1}
+      $$
+      And we can define the projection $\widetilde{\sigma}$ from the south pool,
+      together with $\widetilde{\sigma}^{-1}$, that can be expressed similarly as:
+      $$
+      \widetilde{\sigma}(e^{i\theta} ) = \frac{\cos\theta}{1+\sin\theta }
+      \quad \text{and} \quad
+      \widetilde{\sigma}^{-1}(u) = \frac{2u - i(u^2-1)}{u^2+1}
+      $$
+      The n-th power map can be expressed
+      in complex coordinates:
+      $$
+      p_n(\cos\theta + i\sin\theta) = \cos(n\theta) + i\sin(n\theta)
+      $$
+      The coordinate representation $\widehat{p_n} = \psi \circ p_n \circ \varphi^{-1}$,
+      where $\psi$ and $\varphi$ are both either $\sigma$ or $\widetilde{\sigma}$.
+      Choosing the right chart for each point, one can express $\widehat{p_n}$ as follows:
+      \begin{align*}
+        \widehat{p_n}(u) &= \psi \circ p_n \circ \varphi^{-1}(u) =
+        \left| \cos\phi = \frac{2u}{u^2+1}, \sin\phi = \frac{\pm (u^2-1)}{u^2+1}\right|
+        \\&=
+        \psi \circ p_n (\cos\phi + i\sin\phi) = \psi(\cos(n\phi) + i\sin(n\phi))
+        \\&=
+        \frac{\cos(n\phi)}{1 \pm \sin(n\phi)} = 
+        \frac{\cos\left(n\left( \arccos\left( \frac{2u}{u^2+1} \right)  \right)\right) }
+        {1 \pm \sin\left(n\left( \arccos\left( \frac{2u}{u^2+1} \right) \right) \right)}
+      \end{align*}
+      Which is smooth if codomain is a domain of $\arccos$. Obviously, we can cover
+      each point of $\mathbb{R}$ with a collection of such codomains (just got lazy at this point lol).
+
+    \item[(b)] Again, we will use stereographic projections, just because we can:
+      $$
+      \sigma_\pm (x^1,\dots ,x^{n+1} ) = \frac{(x^1,\dots ,x^n)}{1\mp x^{n+1} },
+      \quad\text{and}\quad
+      \sigma_\pm ^{-1}(u^1,\dots ,u^n) =\pm \frac{(2u^1,\dots ,2u^n,|u|^2-1)}{|u|^2+1}
+      $$
+      Let's consider the coordinate representation $\widehat{\alpha} = \sigma_\mp \circ \alpha \circ \sigma_\pm ^{-1}$.
+      It is wel defined on all of $\mathbb{R}^n$ since ... well ... it's obvious.
+      Then, the following is smooth (similarty we can prove for $\widehat{\alpha}_-$):
+      \begin{align*}
+        \widehat{\alpha}_+(u^1,\dots ,u^n) &= \sigma_- \left( - \frac{(2u^1,\dots ,2u^n,|u|^2-1)}{|u|^2+1}\right)
+        \\&=
+        -\frac{(2u^1,\dots ,2u^n)}{|u|^2+1} \left( 1 - \frac{|u|^2-1}{|u|^2+1} \right) ^{-1}
+        \\&=
+        -\frac{(2u^1,\dots ,2u^n)}{|u|^2+1} \frac{|u|^2+1}{2} = -(u^1,\dots ,u^n)
+      \end{align*}
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[2-5 (b)]
+  $(\implies)$ First, let's show that if $f \circ \psi^{-1}\colon \widetilde{\mathbb{R}}\to \mathbb{R}$ is smooth, 
+  where $\psi^{-1}(x) = x^{\frac{1}{3}} $, then $f^{(n)} (0) = 0$ for all $n \nmid 3$.
+  We can express $f = (f \circ \psi^{-1}) \circ \psi$, and apply the combinatorial
+  form of the \href{https://en.wikipedia.org/wiki/Fa%C3%A0_di_Bruno%27s_formula}{Faà di Bruno's formula}
+  to express the $n$-th derivative:
+  $$
+  \frac{d ^n}{d x^n} (\varphi \circ \psi) (x)=
+  \sum_{\pi \in \Pi}
+    \frac{d^{|\pi|} \varphi}{d x^{|\pi|} }  \left( \psi(x) \right) \cdot
+    \prod_{B \in \pi} \frac{d^{|B|} \psi}{d x^{|B|} } (x)\,,
+  $$
+  where $\varphi = f \circ \psi^{-1}$, $\pi$ runs throught $\Pi$, which is the
+  collection of all partitions of the set $\{i\}_{i=1}^n$, and $B$ runs through
+  all blocks of partition $\pi$. The values of $\psi^{(n)} (0)$ are all $0$, except
+  for $n = 3$. So, the product is positive only if $|B| = 3$ for all $B \in \pi$.
+  It follows that the formula above can only give non-zero values if $n$ is divisible
+  by $3$.
+
+  $(\impliedby)$ Now, assuming that $f^{(n)} (0) = 0$ for all $n \nmid 3$, we need to prove that
+  $\varphi = f \circ \psi^{-1}$ is smooth. For all $x \ne 0$, $\psi^{-1}$ is smooth,
+  so $\varphi$ is smooth there as well. The problem place is $0$. Let's expand $f$
+  into Taylor's series:
+  $$
+  f(x) = \sum_{k=0}^n \frac{f^{(k)}(0)}{k!} x^k + R_n(x)
+  $$
+  Since $f$ is smooth, thus absolutely continuous, we can use the integral form
+  of the remainder $R_n$:
+  $$
+  R_n(x) = \int_{0}^x \frac{(x-t)^n}{n!} f^{(n+1)}(t) dt= x^{n+1} \int_0^1\frac{(1-t)^n}{n!}f^{(n+1)}(x t)dt= x^{n+1} g_{n+1}(x)
+  $$
+  with $g_{n+1} $ obviously smooth. Taking $n = 3m$, we get:
+  $$
+  f \circ \psi^{-1}(x) = f(\sqrt[3]{x}) = \sum_{k=0}^m a_k x^k + x^{m+\frac{1}{3}}g_{3m+1}(\sqrt[3]{x})
+  $$
+  where $a_k$ are some constants. Now, let's prove by induction that if $h$ is of class $C^m$, then
+  $x^{m+\frac{1}{3}} h\left(\sqrt[3]{x}\right)$ is also of class $C^m$.
+  For $m=0$, it is clear (product of continuous is continuous). Assume it is true
+  for $m-1$. The derivative of $x^{m+\frac{1}{3}} h(\sqrt[3]{x}) $ for $x\ne 0$ is:
+  $$
+  x^{(m-1) +\frac{1}{3}} \left(\frac{1}{3}h'\left( \sqrt[3]{x} \right)  + \left( m+\frac{1}{3} \right) h \left( \sqrt[3]{x} \right)  \right )
+  $$
+  The limit at $0$ is $0$ --- we have a finite limit in the bracket, multiplied by some x to a positive power.
+  The derivative can be extended at $0$ by the extension lemma. So, the derivative
+  is of class $C^{m-1}$, which makes $x^{m+\frac{1}{3}} h\left(\sqrt[3]{x}\right)$
+  be of class $C^m$.
+
+  Substituting $h$ with the smooth $g_{3m+1} $, we have proven that $f \circ \psi^{-1}$
+  is a smooth function, making $f$ a smooth mapping between $\widetilde{\mathbb{R}}$
+  and $\mathbb{R}$.
+\end{exercise}
+
+\begin{exercise}[2-7]
+  Let's show that for any $k \in \mathbb{N}$, there is a collection $\{f_i\}_{i=1}^k$
+  of linearly independent functions. First, we will construct such collection of 
+  functions with disjoint support.
+
+  Choose a coordinate cube $U \subset M$ and a homeomorphism $\varphi \colon U \to (0,1)^n$.
+  For each $i = 1, \dots ,k$, let $B_i = (0,1)^{n-1} \times (\frac{i-1}{k}, \frac{i}{k})$.
+  Inside each $B_i$, let $A_i$ be a nonempty closed set. By propositoin 2.25,
+  there exists a smooth bump function $f_i$ for $A_i$ supported in $B_i$.
+
+  Obviously, since the supports are all distinct, then $f_i$ cannot be expressed
+  as a linear combination of other $f_j \colon j \ne i$, because they will be
+  all zero on $\supp f_i$.
+\end{exercise}
+
 
 
 

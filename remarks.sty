@@ -10,6 +10,7 @@
     filecolor=magenta,
     urlcolor=cyan,
 }
+\usepackage{thmtools}
 
 \newenvironment{exercise}[1][]{%
   \mdfsetup{frametitle={%
@@ -37,3 +38,21 @@
 
 \setlength\parindent{0pt}
 \setlength\parskip{8pt}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\DeclareMathOperator\supp{supp}
+
+\declaretheoremstyle[%
+  spaceabove=-3pt,%
+  spacebelow=3pt,%
+  headfont=\normalfont\itshape,%
+  postheadspace=1em,%
+  qed=\qedsymbol%
+]{mystyle}
+\declaretheorem[name={Proof},style=mystyle,unnumbered,
+]{prf}
+
